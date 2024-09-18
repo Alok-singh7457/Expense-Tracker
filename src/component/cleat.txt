@@ -1,0 +1,39 @@
+import React, { useState } from 'react';
+
+function App() {
+  
+  const [inputText, setInputText] = useState('');
+  
+  const [items, setItems] = useState([]);
+
+ 
+  const handleInputChange = (e) => {
+    setInputText(e.target.value);
+  };
+
+ 
+  const handleAddClick = () => {
+    if (inputText.trim()) { // Ensure non-empty input
+      setItems([...items, inputText]); // Add new item to the list
+      setInputText(''); // Clear the input field
+    }
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={inputText}
+        onChange={handleInputChange}
+      />
+      <button onClick={handleAddClick}>Add</button>
+      <ul>
+        {items.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;

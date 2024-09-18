@@ -1,0 +1,47 @@
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+    background-color: rgba(0, 0, 0, 0.623);
+    color: white;
+}
+/* .changer {
+
+    position: absolute;
+    height: 5px;
+    width: 250px;
+    border-radius: 20%;
+    background-color: red;
+
+
+} */
+
+
+/* .alok{
+    animation: 2s linear 1s ease reverse ;
+}
+.alok a:nth-child(1):hover~.changer {
+
+    height: 5px;
+    width: 250px;
+    border-radius: 20%;
+}
+
+.alok a:nth-child(2):hover~.changer {
+
+    left: 81%;
+    height: 5px;
+    width: 100px;
+    border-radius: 20%;
+}
+.alok a:nth-child(3):hover~.changer {
+
+    left: 720px;
+    height: 5px;
+    width: 100px;
+    border-radius: 20%;
+} */
