@@ -17,10 +17,7 @@ function App() {
         path:'/Todo',
         element:<><Navbar/><Todo/> </>
       },
-      {
-        path:'/Notes',
-        element:<><Navbar/><Notes/> </>
-      },
+    
     ])
 
   return (

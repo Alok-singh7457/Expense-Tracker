@@ -4,17 +4,31 @@ const Expense = () => {
 
 
   const [expenseTxt, setExpenseTxt] = useState('');
-  const [expenseAmt, setExpenseAmt] = useState(Number)
-  const [expenses , setExpenses] = useState([])
- 
+  const [expenseAmt, setExpenseAmt] = useState('')
+  const [expenses, setExpenses] = useState([])
 
-  const handleADD = () =>{
-    if(expenseAmt > 0 && expenseTxt.trim() !== ''){
+  const [income, setIncome] = useState('')
+  const [displayIncome, setDisplayIncome] = useState('')
+  const [isSummited, setIsSummited] = useState(false)
 
-          setExpenses([...expenses, { text: expenseTxt, amt: expenseAmt }]);
-        }
-              setExpenseTxt("")
-              setExpenseAmt(0)
+  const handleADD = () => {
+    if (expenseAmt > 0 && expenseTxt.trim() !== '') {
+
+      setExpenses([...expenses, { text: expenseTxt, amt: expenseAmt }]);
+      setDisplayIncome((prevIncome) => prevIncome - Number(expenseAmt));
+    }
+    setExpenseTxt("")
+    setExpenseAmt('')
+
+  }
+
+  const handleAddIncome = () => {
+
+
+    setDisplayIncome(income)
+    setIncome('')
+    setIsSummited(true)
+
 
   }
 
@@ -52,39 +66,40 @@ const Expense = () => {
 
 
               <input type="number" name="" id=""
+                onChange={(e) => setIncome(e.target.value)}
+                value={income}
+                disabled={isSummited}
                 placeholder='Write your Income'
-                className='Income h-11 pl-4 rounded-lg text-gray-800'
+                className='Income h-11 pl-4 rounded-lg text-gray-800 outline-none'
               />
 
 
-              <button className='bg-white h-7 w-12 text-gray-800 rounded-lg font-semibold'>Add</button>
+              <button onClick={handleAddIncome}
+                disabled={isSummited}
+                className='bg-white h-7 w-12 text-gray-800 rounded-lg font-semibold'>Add</button>
             </div>
           </div>
 
           <div className="output">
-            <div className="outputItem flex gap-4 pl-3">
-              {expenses.map((expense , index) =>(
-                <div key={index} >
-                  <p>{expense.text} </p>
-                  <p>{expense.amt} </p>
+            {expenses.map((expense, index) => (
+              <div className="outputItem flex gap-4 pl-3">
+
+                <div key={index} className='flex gap-3' >
+                  <li>{expense.text}</li>
+                  <p>{expense.amt}</p>
                 </div>
-              ))}
 
-            </div>
 
+              </div>
+            ))}
 
           </div>
-
-
-
-
-
         </div>
 
 
         <div className="container2 w-1/3  h-[90vh] ">
           <div className='total'>
-            <p className='text-8xl'>Left = </p>
+            <p className='text-4xl text-gray-900 font-extrabold '>Money Left ={displayIncome} </p>
           </div>
         </div>
       </div>
